@@ -1,4 +1,5 @@
 ﻿using WarriorsWar.Enum;
+using WarriorsWar.Equipment;
 namespace WarriorsWar
 {
     class Warrior
@@ -10,10 +11,12 @@ namespace WarriorsWar
         private Weapon weapon;
         private Armor armor;
 
-        private Faction faction;
+        //set once, can not be changed later
+        private readonly Faction FACTION;
 
-        private int goodGuyStartHealth;
-        private int badGuyStartHealth;
+        //const, no one will be able to change 
+        private const int good_Guy_Start_Health = 100;
+        private const int bad_Guy_Start_Health = 300;
 
         //
         public bool IsAlive
@@ -24,5 +27,30 @@ namespace WarriorsWar
             }
         }
 
+        //constructor
+        public Warrior(string name, Faction faction)
+        {
+            this.name = name;
+            this.FACTION = faction;
+            isAlive = true;
+
+            switch (this.FACTION)
+            {
+                case Faction.goodGuy:
+                    weapon = new Weapon(faction);
+                    armor = new Armor(faction);
+                    health = good_Guy_Start_Health;
+                    break;
+                case Faction.badGuy:
+                    weapon = new Weapon(faction);
+                    armor = new Armor(faction);
+                    health = bad_Guy_Start_Health;
+                    break;
+                default:
+                    break;
+            }
+        }
+        //attack
+        
     }
 }
