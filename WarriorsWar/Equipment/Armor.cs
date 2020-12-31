@@ -12,8 +12,8 @@ namespace WarriorsWar.Equipment
                 return armorPoints;
             }
         }
-        private const int good_guy_armor = 900;
-        private const int bad_guy_armor = 999;
+        private const int good_guy_armor = 75;
+        private const int bad_guy_armor = 93;
         public Armor(Faction faction)
         {
             switch (faction)

@@ -1,4 +1,5 @@
-﻿using WarriorsWar.Enum;
+﻿using System.Threading;
+using WarriorsWar.Enum;
 using WarriorsWar.Equipment;
 namespace WarriorsWar
 {
@@ -6,6 +7,13 @@ namespace WarriorsWar
     {
         private int health;
         private string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+        }
         private bool isAlive;
 
         private Weapon weapon;
@@ -16,7 +24,7 @@ namespace WarriorsWar
 
         //const, no one will be able to change 
         private const int good_Guy_Start_Health = 190;
-        private const int bad_Guy_Start_Health = 300;
+        private const int bad_Guy_Start_Health = 210;
 
         //
         public bool IsAlive
@@ -51,17 +59,22 @@ namespace WarriorsWar
             }
         }
         //attack
-        public void Attack(Warrior enemyWarrior)
+        public void Attack(Warrior enemy)
         {
-            int damage = weapon.Damage/enemyWarrior.armor.ArmorPoints;
-            enemyWarrior.health = enemyWarrior.health - damage;
-            if(enemyWarrior.health <=0)
+            int damage = weapon.Damage/enemy.armor.ArmorPoints;
+            enemy.health -= damage;
+            if(enemy.health <=0)
             {
-                enemyWarrior.isAlive = false;
-                System.Console.WriteLine($"{enemyWarrior.name} is dead");
+                enemy.isAlive = false;
+                System.Console.WriteLine($"{enemy.name} is dead");
                 System.Console.WriteLine($"{this.name} won");
 
             }
+            else
+            {
+                System.Console.WriteLine($"{this.name} attacked {enemy.name} \n\t{enemy.Name} health: {enemy.health}");
+            }
+            //Thread.Sleep(1000);
         }
         
     }

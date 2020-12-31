@@ -5,8 +5,8 @@ namespace WarriorsWar.Equipment
     class Weapon
     {
         private int damage;
-        private const int good_guy_armor = 10;
-        private const int bad_guy_armor = 11; 
+        private const int good_guy_armor = 333;
+        private const int bad_guy_armor = 191; 
         public int Damage
         {
             get

@@ -10,9 +10,10 @@ namespace WarriorsWar
         {
             Warrior goodGuy = new Warrior("GoodLord", Faction.goodGuy);
             Warrior badGuy = new Warrior("BadLord", Faction.badGuy);
+
             while (goodGuy.IsAlive && badGuy.IsAlive)
             {
-                if(rand.Next(0,10)<5)
+                if(rand.Next(0,10) < 5)
                 {
                     goodGuy.Attack(badGuy);
                 }
