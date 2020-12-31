@@ -15,7 +15,7 @@ namespace WarriorsWar
         private readonly Faction FACTION;
 
         //const, no one will be able to change 
-        private const int good_Guy_Start_Health = 100;
+        private const int good_Guy_Start_Health = 190;
         private const int bad_Guy_Start_Health = 300;
 
         //
@@ -51,6 +51,18 @@ namespace WarriorsWar
             }
         }
         //attack
+        public void Attack(Warrior enemyWarrior)
+        {
+            int damage = weapon.Damage/enemyWarrior.armor.ArmorPoints;
+            enemyWarrior.health = enemyWarrior.health - damage;
+            if(enemyWarrior.health <=0)
+            {
+                enemyWarrior.isAlive = false;
+                System.Console.WriteLine($"{enemyWarrior.name} is dead");
+                System.Console.WriteLine($"{this.name} won");
+
+            }
+        }
         
     }
 }
